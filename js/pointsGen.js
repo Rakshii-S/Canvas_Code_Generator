@@ -30,7 +30,6 @@ function drawLine()
    y1 = YValues[YValues.length-2];
    x2 = XValues[XValues.length-1];
    y2 = YValues[YValues.length-1];
-   console.log("Message from the index js:"+x1+" "+y1+"...."+x2+" "+y2)
 
    if(x1 != undefined && x2 != undefined && c == undefined)
    {
@@ -56,9 +55,9 @@ function drawLine()
         lwLine.push(lw);
         SFColorLine.push(SFcolor);
         redraw();
-        document.getElementById("code").innerHTML = Code.join(" ");
+        document.getElementById("code").innerHTML = Code.join("\n");
         rdQueue.push("line");
-        document.getElementById("message1").value="By default line width is 3.";
+        document.getElementById("message1").value="By default the line width is 3.";
    }else{
         document.getElementById("message1").value="Invalid Input."
    }
@@ -100,9 +99,9 @@ function drawCurve1()
         lwCurve1.push(lw);
         SFColorCurve1.push(SFcolor);
         redraw();
-        document.getElementById("code").innerHTML =Code.join(" ");
+        document.getElementById("code").innerHTML =Code.join("\n");
         rdQueue.push("curve1")
-        document.getElementById("message1").value="Bydefault line width is 3."
+        document.getElementById("message1").value="By default the line width is 3."
     }
     else
     {
@@ -114,7 +113,7 @@ function drawCurve1()
 function drawCircle()
 {
     let c, x, y, radius, SAngle, EAngle, counterclockwise;
-    document.getElementById("message1").value="Circle ==> Start angle: 0,\tEnd angle: 6.2832.\nHalf circle ==> Start angle: 0,\tEnd angle: 3.1416.\nCounterClockwise ==> true/false\tor\t1/0."
+    document.getElementById("message1").value="Circle ==> Start angle: 0,\nEnd angle: 6.2832.\n\nHalf circle ==> Start angle: 0,\nEnd angle: 3.1416.\n\nCounterClockwise ==> true/false\n or 1/0."
     c = XValues[XValues.length-2]
     x = XValues[XValues.length-1]
     y = YValues[YValues.length-1]
@@ -130,11 +129,16 @@ function drawCircle()
         SAngle = Number(document.getElementById("arcInp2").value);
         EAngle = Number(document.getElementById("arcInp3").value);
         counterclockwise = document.getElementById("arcInp4").value;
+
         //after the user click the enter button the control is set to true
         if(Control == true)
         {
             document.getElementById("arc").innerHTML="Arc(Circle, Half-circle etc)<br>(1-point)";
             document.getElementById("arc").style.textAlign="center";
+            document.getElementById("arcInp1").value = " ";
+            document.getElementById("arcInp2").value = " ";
+            document.getElementById("arcInp3").value = " ";
+            document.getElementById("arcInp4").value = " ";
             emptyVal = ["arcInp1","arcInp2","arcInp3","arcInp4"];
             Code.push("ctx.beginPath();\nctx.lineWidth="+lw+";\nctx.strokeStyle="+SFcolor+";\nctx.arc("+x+","+y+","+radius+","+SAngle+","+EAngle+","+counterclockwise+");\nctx.stroke();\nctx.closePath();\n");
             ctx.clearRect(x-3,y-3,5,5);
@@ -157,10 +161,10 @@ function drawCircle()
             lwArc.push(lw);
             SFColorArc.push(SFcolor);
             redraw();
-            document.getElementById("code").innerHTML = Code.join(" ");
+            document.getElementById("code").innerHTML = Code.join("\n");
             Control=false
             rdQueue.push("circle");
-            document.getElementById("message1").value="By default line width is 3."
+            document.getElementById("message1").value="By default the line width is 3."
         }
     }
     else
@@ -208,9 +212,9 @@ function drawCurve2()
         lwCurve2.push(lw);
         SFColorCurve2.push(SFcolor);
         redraw();
-        document.getElementById("code").innerHTML = Code.join(" ");
+        document.getElementById("code").innerHTML = Code.join("\n");
         rdQueue.push("curve2");
-        document.getElementById("message1").value="By default line width is 3."
+        document.getElementById("message1").value="By default the line width is 3."
     }
     else
     {
@@ -259,10 +263,10 @@ function drawRectangle()
             lwRect.push(lw);
             SFColorRect.push(SFcolor);
             redraw();
-            document.getElementById("code").innerHTML = Code.join(" ");
+            document.getElementById("code").innerHTML = Code.join("\n");
             Control=false
             rdQueue.push("rectangle")
-            document.getElementById("message1").value="By default line width is 3."
+            document.getElementById("message1").value="By default the line width is 3."
         }
     }
     else

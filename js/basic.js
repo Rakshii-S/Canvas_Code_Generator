@@ -51,6 +51,7 @@ function handleImageUpload(e)
         {
             image.src = event.target.result;
         }
+        clearPoints();
     }
 }
 
@@ -88,7 +89,7 @@ function undoPoint()
     //when the image is drawn on the screen
     if(image.src != "")
     {
-        ctx.drawImage(image,0,0,700,565)
+        ctx.drawImage(image,0,0,CanvasElem.width, CanvasElem.height)
         for(i=0;i<XValues.length-1;i++)
         {
             x = XValues[i]
@@ -103,8 +104,8 @@ function undoPoint()
         }
     }
     redraw();
-    XValues.pop()
-    YValues.pop()
+    XValues.pop();
+    YValues.pop();
     SFcolorValues.pop();
 }
 
@@ -113,25 +114,25 @@ function copyCode()
 {
     var copyCode = document.getElementById("code").value;
     navigator.clipboard.writeText(copyCode);
-    document.getElementById("message1").value="Code is copied to the clipboard."
+    document.getElementById("message1").value="Code is copied to the clipboard.";
 }
 
 /*Code to clear the canvas and code section*/
 function clearPoints()
 {
     ctx.clearRect(0,0,CanvasElem.width,CanvasElem.height);
-    Code = [ ], rdQueue=[ ], XValues = [ ], YValues = [ ], lw = 3, SFcolor = "#f9e900", SFcolorValues = [ ], lineX = [ ], lineY = [ ], lwLine=[ ];
+    Code = [ ], rdQueue=[ ], XValues = [ ], YValues = [ ], lw = 3, SFcolor = "#d83dd9", SFcolorValues = [ ], lineX = [ ], lineY = [ ], lwLine=[ ];
     SFColorLine = [ ], curve1X = [ ], curve1Y = [ ], lwCurve1=[ ], SFColorCurve1 = [ ], arcX = [ ], arcY = [ ], ArcRadius = [ ], ArcAngle1 = [ ],ArcAngle2 = [ ], ArcDirection = [ ], lwArc=[ ];
     SFColorArc = [ ], curve2X = [ ], curve2Y = [ ], lwCurve2=[ ], SFColorCurve2 = [ ], rectX = [ ], rectY = [ ], RectWidth = [ ], RectHeight = [ ], lwRect=[ ], SFColorRect = [ ];
     image.src = " ";
     document.getElementById("SFColor").value = "#d83dd9";
     document.getElementById("code").innerHTML = " ";
-    document.getElementById("message1").value = "By default line width is 3.";
+    document.getElementById("message1").value = "By default the line width is 3.";
     emptyVal = ["arcInp1","arcInp2","arcInp3","arcInp4","rectInp1","rectInp2"];
-    for(i=0;i<=emptyVal.length;i++)
-    {
-        document.getElementById(emptyVal[i]).value = "";
-    }
+    // for(i=0;i<=emptyVal.length;i++)
+    // {
+    //     document.getElementById(emptyVal[i]).value = " ";
+    // }
 }
 
 //change the canvas size
