@@ -19,7 +19,8 @@ function setStyles(elements, styles) {
     elements.forEach(el => Object.assign(el.style, styles));
 }
 
-function ComponentsDark() {
+function ComponentsDark() 
+{
     setStyles([...document.getElementsByClassName("textA"), 
                ...document.getElementsByClassName("TextDisplay"), 
                ...document.getElementsByClassName("InputDisplay")], 
@@ -39,7 +40,7 @@ function ComponentsDark() {
     setStyles([document.getElementById("canvasDisplay")], 
               { backgroundColor: "#381e45", color: "white", border: "2px solid #d83dd9" });
 
-    setStyles([document.getElementById("canvas")], { backgroundColor: "#f2d8ff" });
+    setStyles([document.getElementById("canvas")], { backgroundColor: "#381e45",border:"2px solid #d83dd9" });
 
     setStyles([document.getElementById("header"), document.getElementById("footer")], 
               { backgroundColor: "#381e45", color: "#d83dd9" });
@@ -87,7 +88,7 @@ function ComponentsLight() {
     setStyles([document.getElementById("canvasDisplay")], 
               { backgroundColor: "#a35bc7", color: "#381e45", border: "2px solid #381e45" });
 
-    setStyles([document.getElementById("canvas")], { backgroundColor: "white" });
+    setStyles([document.getElementById("canvas")], { backgroundColor: "white",border:"2px solid #381e45" });
 
     setStyles([document.getElementById("header"), document.getElementById("footer")], 
               { backgroundColor: "#a35bc7", color: "#381e45" });
