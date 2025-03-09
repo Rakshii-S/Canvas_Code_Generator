@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Code Generator</title>
+    <link href="../images/Logo.png" rel="icon" type="image/icon"/>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <header id="header">
+        <section class="left">
+            <div class="logo">
+                <img src="../images/Logo.png" alt="logo">
+            </div>
+            <div class="logoHeader">
+                CANVAS CODE GENERATOR
+            </div>
+        </section>
+        <section class="right">
+            <!--Desktop-->
+            <div class="docs">
+                <a class="linkkk" href="#">Docs</a>
+            </div>
+            <div class="toggle">
+                <label class="toggle-container">
+                    <input type="checkbox" class="modeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="mode">
+                <img class="iconImage" src="../images/light-mode.png" alt="light-mode">
+            </div>
+
+            <!--Mobile and tablet-->
+            <img src="../images/menu.png" alt="menu" id="menuImg" onclick="menuDisplay()">
+            <div id="menu" menu-active="false">
+                <div class="docss">
+                    <a href="#">Docs</a>
+                </div>
+                <div class="togglee">
+                    <label class="toggle-container">
+                        <input type="checkbox" class="modeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="modee">
+                    <img class="iconImage" src="../images/light-mode.png" alt="light-mode" width="25px">
+                </div>
+            </div>
+        </section>
+    </header>
+    <main id="main">
+        <!--Choose file, line width size and color, fill color, undo point and drawing, clear, all the canvas function-->
+        <!--data-active is used for making it responsive-->
+        <div id="section1" data-active-1="false">
+            <div class="part1">
+                    <div class="TextDisplay">CHOOSE AN IMAGE</div>
+                    <div class="InputDisplay"><input id="file" type="file" style="width:90px"/></div>
+
+                    <div class="TextDisplay">LINE WIDTH SIZE</div>
+                    <div class="InputDisplay">
+                        <input id="linewidth" type="text" style="width:50px; margin:8px"/>
+                        <button data-active-1="false" class="ButtonDisplay" onclick="lineWidth()">ENTER</button>
+                    </div>
+
+                    <div class="TextDisplay">LINE WIDTH COLOR</div>
+                    <div class="InputDisplay">
+                        <input id="SFColor" type="color" style="width:50px; margin:8px" value="#d83dd9"/>
+                        <button data-active-1="false" class="ButtonDisplay" onclick = "strokeFillColor()">ENTER</button>
+                    </div>
+            </div>
+
+            <div class="part2">
+                    <button onclick="undoPoint()" class="UndoDisplay">UNDO POINT</button>
+                    <button onclick="undoDrawing()" class="UndoDisplay">UNDO DRAWING</button>
+                    <button onclick="clearPoints()" class="UndoDisplay">CLEAR</button>
+            </div>
+
+            <div class="part3">
+                    <button onclick="drawLine()" class="FuncDisplay">LINE<br>(2-points)</button>
+                    <button onclick="drawCurve1()" class="FuncDisplay">QUADRATIC BEZIER CURVE<br>(3-points)</button>
+                    <button class="FuncDisplay" onclick="drawCurve2()">CUBIC BEZIER CURVE<br>(4-points)</button>
+
+                    <div id="function2" data-dark-mode = "false" class="FuncDisplay2">
+                        <button class = "FuncText" id="arc" onclick="drawCircle()">ARC<br>(Circle, Half-circle etc)<br>(1-point)</button>
+                        <div class="FuncInputs">
+                            <input id="arcInp1" type="text">
+                            <input id="arcInp2"  type="text">
+                            <input id="arcInp3" type="text">
+                            <input id="arcInp4"  type="text">
+                        </div>
+                        <button class="FuncSubmit" onclick="setControlNerase1()">Enter</button>
+                    </div>
+                    <div data-dark-mode = "false"  class="FuncDisplay2">
+                        <button id="rect" class="FuncText" style="width:35%" onclick="drawRectangle()">RECTANGLE<br>(1-point)</button>
+                        <div class="FuncInputs">
+                            <input id="rectInp1" type="text">
+                            <input id="rectInp2"  type="text">
+                        </div>
+                        <button class="FuncSubmit"    style="width:35%" onclick="setControlNerase2()">Enter</button>
+                    </div>
+            </div>
+            <button data-dark-mode = "false" id="bt1" data-active-1="false" onclick="OtherFunctions()"><img src="../images/slider.png" width="22" alt="slider"></button>
+            <button data-dark-mode = "false" id="bt" data-active-1="false" onclick="FirstFunctions()"><img src="../images/slider.png" width="22" alt="slider"></button>
+        </div>
+
+        <!--CANVAS-->
+        <div id="section2">
+                <button id="btOne" onclick="leftSlider()" data-active-1="false">
+                    <img src="../images/slider2.png" width="30" alt="slider">
+                </button>
+                <button id="btTwo" onclick="rightSlider()">
+                    <img src="../images/slider2.png" width="30" alt="slider">
+                </button>
+                <div id="canvasDisplay"></div>
+                <canvas id="canvas"></canvas>
+        </div>
+
+        <!--Canvas resize section, display some statements, display code snippet-->
+        <div id="section3" data-active-2="false">
+                <textarea id="message1" class="textA">By default the line width is 3.</textarea>
+                <div id="canvasSize" class= "InputDisplay">CHANGE CANVAS SIZE</div>
+                    <div class="InputDisplay">
+                        <input id="ChangeSizeWidth" type="text" style="width:50px; margin:8px;"/>
+                        <div style="color:white;padding-top:8px"> X </div>
+                        <input id="ChangeSizeHeight" type="text" style="width:50px; margin:8px"/>
+                        <button class="ButtonDisplay" onclick="Change_Canvas_Size()">ENTER</button>
+                    </div>
+                <textarea id="code" class="textA"></textarea>
+                <button onclick="copyCode()" id="bt2" data-active-2="false"><img src="../images/copy.png" width="27" alt="slider"></button>
+        </div>
+    </main>
+    <footer id="footer">
+        <div>Canvas Code Generator<br>Copyright &copy 2025</div>
+    </footer>
+
+    <script src="../js/index.js"></script>
+    <script src="../js/basic.js"></script>
+    <script src="../js/pointsGen.js"></script>
+    <script src="../js/redraw.js"></script>
+</body>
+</html>
